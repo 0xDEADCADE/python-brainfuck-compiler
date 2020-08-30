@@ -4,6 +4,8 @@
 # Array Size: 30000 cells, Undefined OOB Behavior
 import sys
 
+Memdump = False
+
 # If no file, or too many arguments are supplied.
 if len(sys.argv) != 2:
     print("Incorrect usage!")
@@ -100,6 +102,25 @@ while tickpos < len(BFCodeMin):
         elif char == "]":
             IndentCount -= 1
             tickpos += 1
+
+if Memdump:
+    PyCode += f"""
+MDumpArr = []
+TmpArray = []
+for item in Cells:
+    if len(TmpArray) == 8:
+        MDumpArr.append(TmpArray)
+        TmpArray = []
+    TmpArray.append(item)
+
+while all(n == 0 for n in MDumpArr[-1]):
+    del MDumpArr[-1]
+
+for item in MDumpArr:
+    for val in item:
+        print(str(val) + " ", end="")
+    print("")
+"""
 
 # Open another file and write the compiled code to it
 with open("CompiledBrainfuck.py", "w+") as f:
