@@ -2,6 +2,7 @@
 # Brainfuck compiler to python3 written by 0xDEADCADE
 # Cell Size: 32 bits, no wrap
 # Array Size: 30000 cells, Undefined OOB Behavior
+# Fully PEP8 Compliant
 import sys
 
 Memdump = False
@@ -72,7 +73,7 @@ while tickpos < len(BFCodeMin):
         # While the characters after the current tickpos character are the same
         while BFCodeMin[tickpos] == BFCodeMin[tickpos + SameCharCount]:
             SameCharCount += 1
-        
+
         # If the current character is repeated and is +, -, <, or >
         if SameCharCount > 1 and BFCodeMin[tickpos] in "+-<>":
             # Add the SameCharSnippets[character],
