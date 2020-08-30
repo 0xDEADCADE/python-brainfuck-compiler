@@ -106,6 +106,7 @@ while tickpos < len(BFCodeMin):
 
 if Memdump:
     PyCode += f"""
+print("Pointer " + Pointer)
 MDumpArr = []
 TmpArray = []
 for item in Cells:
